@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salon Charbel Hbayter - Premium Men's Grooming</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0a0a0a;
+            --secondary: #1a1a1a;
+            --accent: #d4af37;
+            --accent-dark: #b8941f;
+            --text: #ffffff;
+            --text-light: #cccccc;
+            --shadow: rgba(0, 0, 0, 0.5);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0 20px;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+  .logo-icon {
+    font-size: 12px;  /* Changed from 20px */
+    font-weight: 700;
+    color: var(--accent);
+    text-decoration: none;
+    transition: var(--transition);
+    position: relative;
+    padding: 8px 16px;
+    border: 2px solid var(--accent);
+    border-radius: 6px;
+    background: linear-gradient(45deg, transparent 0%, rgba(212, 175, 55, 0.1) 50%, transparent 100%);
+    background-size: 200% 200%;
+    animation: shimmer 3s ease-in-out infinite, pulse 2s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+.logo-icon::before {
+    content: '✨';
+    position: absolute;
+    top: -12px;
+    right: -8px;
+    font-size: 16px;
+    animation: sparkle 1.5s ease-in-out infinite;
+}
+
+.logo-icon::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 6px;
+    background: linear-gradient(45deg, var(--accent), #fff, var(--accent));
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+    animation: rotate 4s linear infinite;
+}
+
+.logo-icon:hover {
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+}
+
+.logo-icon:hover::after {
+    opacity: 0.3;
+}
+
+@keyframes shimmer {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(212, 175, 55, 0.6), 0 0 40px rgba(212, 175, 55, 0.3);
+    }
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.3) rotate(180deg);
+        opacity: 0.7;
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo-text span {
+            font-size: 14px;
+            font-weight: 400;
+            opacity: 0.8;
+            display: block;
+            margin-top: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            cursor: pointer;
+            color: var(--text-light);
+            transition: var(--transition);
+            font-size: 16px;
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .nav-menu li::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu li:hover, 
+        .nav-menu li.active {
+            color: var(--text);
+        }
+
+        .nav-menu li:hover::after,
+        .nav-menu li.active::after {
+            width: 100%;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .cart-btn {
+            position: relative;
+            background: none;
+            border: none;
+            color: var(--text);
+            cursor: pointer;
+            font-size: 22px;
+            transition: var(--transition);
+        }
+
+        .cart-btn:hover {
+            color: var(--accent);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--accent);
+            color: var(--primary);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 28px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--accent);
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            z-index: 999;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav-item {
+            padding: 15px;
+            cursor: pointer;
+            color: var(--text-light);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .mobile-nav-item:hover {
+            color: var(--accent);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* Home Page */
+        .home-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px 50px;
+            background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.6)), 
+                        url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200') no-repeat center center/cover;
+            position: relative;
+        }
+
+        .home-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+            padding: 40px;
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .home-title {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--accent);
+        }
+
+        .home-subtitle {
+            font-size: 20px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .services-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+
+        .service-item {
+            background: rgba(26, 26, 26, 0.8);
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            font-size: 14px;
+            color: var(--text-light);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .service-item i {
+            color: var(--accent);
+            font-size: 16px;
+        }
+
+        .service-item:hover {
+            background: rgba(212, 175, 55, 0.15);
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+
+        .shop-btn {
+            background: transparent;
+            color: var(--accent);
+            padding: 18px 50px;
+            font-size: 18px;
+            border: 2px solid var(--accent);
+            cursor: pointer;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 1px;
+            clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+        }
+
+        .shop-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--accent);
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+            z-index: -1;
+        }
+
+        .shop-btn:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .shop-btn:hover::before {
+            transform: translateX(0);
+        }
+
+        /* Shop Page */
+        .shop-page {
+            min-height: 100vh;
+            padding: 120px 20px 50px;
+            background: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.7)), 
+                        url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200') no-repeat center center/cover;
+        }
+
+        .shop-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .shop-title {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 40px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 20px;
+            color: var(--text);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .shop-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .category-btn {
+            padding: 15px 30px;
+            background: rgba(26, 26, 26, 0.9);
+            color: var(--text);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            font-size: 16px;
+            transition: var(--transition);
+            font-weight: 600;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(10px);
+        }
+
+        .category-btn:hover {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--accent);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .category-btn.active {
+            background: var(--accent);
+            color: var(--primary);
+            border-color: var(--accent);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-category {
+            font-size: 12px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .product-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text);
+            line-height: 1.3;
+        }
+
+        .product-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .add-to-bag-btn {
+            width: 100%;
+            background: transparent;
+            color: var(--accent);
+            padding: 12px;
+            border: 2px solid var(--accent);
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: var(--transition);
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        .add-to-bag-btn:hover {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        /* About Page */
+        .about-page {
+            min-height: 100vh;
+            padding: 120px 20px 50px;
+            background: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.7)), 
+                        url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200') no-repeat center center/cover;
+        }
+
+        .about-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-title {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 50px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 20px;
+            color: var(--text);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .about-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .about-content {
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .about-subtitle {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 30px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .about-text {
+            color: var(--text-light);
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        /* Contact Page */
+        .contact-page {
+            min-height: 100vh;
+            padding: 120px 20px 50px;
+            background: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.7)), 
+                        url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200') no-repeat center center/cover;
+        }
+
+        .contact-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-title {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 50px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .contact-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .contact-content {
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 50px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+
+        .contact-subtitle {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 25px;
+            background: rgba(26, 26, 26, 0.8);
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-link:hover {
+            transform: translateX(10px);
+            background: rgba(212, 175, 55, 0.1);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .contact-link.whatsapp { border-left: 5px solid #25D366; }
+        .contact-link.phone { border-left: 5px solid #2196F3; }
+        .contact-link.instagram { border-left: 5px solid #E1306C; }
+        .contact-link.facebook { border-left: 5px solid #1877F2; }
+        .contact-link.tiktok { border-left: 5px solid #000000; }
+        .contact-link.location { border-left: 5px solid #EA4335; }
+
+        .contact-icon {
+            font-size: 40px;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .contact-link.whatsapp .contact-icon { background: rgba(37, 211, 102, 0.1); color: #25D366; }
+        .contact-link.phone .contact-icon { background: rgba(33, 150, 243, 0.1); color: #2196F3; }
+        .contact-link.instagram .contact-icon { background: rgba(225, 48, 108, 0.1); color: #E1306C; }
+        .contact-link.facebook .contact-icon { background: rgba(24, 119, 242, 0.1); color: #1877F2; }
+        .contact-link.tiktok .contact-icon { background: rgba(255, 255, 255, 0.1); color: #ffffff; }
+        .contact-link.location .contact-icon { background: rgba(234, 67, 53, 0.1); color: #EA4335; }
+
+        .contact-link-info {
+            flex: 1;
+        }
+
+        .contact-link-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .contact-link-text {
+            opacity: 0.8;
+            font-size: 16px;
+        }
+
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 100%;
+            max-width: 400px;
+            height: 100vh;
+            background: var(--primary);
+            box-shadow: -5px 0 20px var(--shadow);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cart-sidebar.active {
+            transform: translateX(0);
+        }
+
+        .cart-header {
+            padding: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--secondary);
+        }
+
+        .cart-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .cart-close {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 28px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .cart-close:hover {
+            color: var(--accent);
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .cart-empty {
+            text-align: center;
+            color: var(--text-light);
+            padding: 50px 20px;
+            font-size: 18px;
+        }
+
+        .cart-item {
+            background: var(--secondary);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 3px solid var(--accent);
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: #ff4444;
+            font-size: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .cart-item-remove:hover {
+            background: rgba(255, 68, 68, 0.1);
+        }
+
+        .cart-footer {
+            padding: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--secondary);
+        }
+
+        .cart-total {
+            margin-bottom: 15px;
+        }
+
+        .cart-total-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .cart-total-row.main {
+            font-size: 20px;
+            font-weight: 700;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: #000000;
+            color: var(--text);
+            padding: 16px;
+            border: 2px solid #000000;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: var(--transition);
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .checkout-btn:hover {
+            background: #1a1a1a;
+            border-color: #1a1a1a;
+            transform: translateY(-2px);
+        }
+
+        .cart-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1999;
+            display: none;
+        }
+
+        .cart-overlay.active {
+            display: block;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .home-title {
+                font-size: 32px;
+            }
+
+            .home-subtitle {
+                font-size: 16px;
+            }
+
+            .home-content {
+                padding: 30px 20px;
+            }
+
+            .services-list {
+                gap: 10px;
+            }
+
+            .service-item {
+                font-size: 12px;
+                padding: 8px 14px;
+            }
+
+            .service-item i {
+                font-size: 14px;
+            }
+
+            .shop-title, .about-title, .contact-title {
+                font-size: 32px;
+            }
+
+            .about-content, .contact-content {
+                padding: 30px 20px;
+            }
+
+            .about-text {
+                font-size: 16px;
+            }
+
+            .category-btn {
+                padding: 10px 15px;
+                font-size: 13px;
+            }
+
+            .products-grid {
+                gap: 15px;
+            }
+
+            .product-image {
+                height: 150px;
+            }
+
+            .product-info {
+                padding: 12px;
+            }
+
+            .product-name {
+                font-size: 14px;
+            }
+
+            .product-price {
+                font-size: 18px;
+            }
+
+            .contact-link {
+                padding: 15px;
+            }
+
+            .contact-icon {
+                font-size: 28px;
+                width: 45px;
+                height: 45px;
+            }
+
+            .cart-sidebar {
+                max-width: 100%;
+            }
+
+            .logo-text {
+                font-size: 16px;
+            }
+
+            .logo-text span {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-image {
+                height: 120px;
+            }
+
+            .product-info {
+                padding: 10px;
+            }
+
+            .product-name {
+                font-size: 13px;
+            }
+
+            .product-category {
+                font-size: 10px;
+            }
+
+            .product-price {
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+
+            .add-to-bag-btn {
+                padding: 10px;
+                font-size: 12px;
+            }
+
+            .services-list {
+                flex-direction: column;
+            }
+
+            .service-item {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a class="logo" onclick="showPage('home')">
+        <a href="https://www.instagram.com/maykel_yammine?igsh=ejIyNDYxdXhvNG84&utm_source=qr" target="_blank" class="logo-icon">
+    Website<br>By M
+</a>
+                <div class="logo-text">
+                    Salon Charbel
+                    <span>Hbayter</span>
+                </div>
+            </a>
+            
+            <ul class="nav-menu">
+                <li onclick="showPage('home')" data-page="home" class="active">Home</li>
+                <li onclick="showPage('shop')" data-page="shop">Shop</li>
+                <li onclick="showPage('about')" data-page="about">About Us</li>
+                <li onclick="showPage('contact')" data-page="contact">Contact</li>
+            </ul>
+
+            <div class="nav-right">
+                <button class="cart-btn" onclick="toggleCart()">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount" style="display: none;">0</span>
+                </button>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-item" onclick="showPage('home')">Home</div>
+        <div class="mobile-nav-item" onclick="showPage('shop')">Shop</div>
+        <div class="mobile-nav-item" onclick="showPage('about')">About Us</div>
+        <div class="mobile-nav-item" onclick="showPage('contact')">Contact</div>
+    </div>
+
+    <div class="page active" id="homePage">
+        <div class="home-page">
+            <div class="home-content">
+                <h1 class="home-title">Premium Men's Grooming</h1>
+                <p class="home-subtitle">Experience excellence in men's grooming with professional products and services crafted for the modern gentleman at Salon Charbel Hbayter.</p>
+                
+                <div class="service-item">
+    <i class="fas fa-cut"></i>
+    <span>Haircut - 400</span>
+</div>
+<div class="service-item">
+    <i class="fas fa-user-tie"></i>
+    <span>Beard Cut - 200</span>
+</div>
+<div class="service-item">
+    <i class="fas fa-scissors"></i>
+    <span>Kid's Haircut - 300</span>
+</div>
+<div class="service-item">
+    <i class="fas fa-spray-can"></i>
+    <span>Hair & Beard Cut - 600</span>
+</div>
+<div class="service-item">
+    <i class="fas fa-spa"></i>
+    <span>بخار مع مسك - 600</span>
+</div>
+<div class="service-item">
+    <i class="fas fa-magic"></i>
+    <span>3 masks - 300</span>
+</div>
+
+                <button class="shop-btn" onclick="showPage('shop')">
+                    <span>Shop Now</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="page" id="shopPage">
+        <div class="shop-page">
+            <div class="shop-container">
+                <h1 class="shop-title">Our Products</h1>
+
+                <div class="categories">
+                    <button class="category-btn active" onclick="filterCategory('all')">All Products</button>
+                    <button class="category-btn" onclick="filterCategory('Gel')">Styling-Products</button>
+                    <button class="category-btn" onclick="filterCategory('Perfume')">Perfume</button>
+                    <button class="category-btn" onclick="filterCategory('Rollon')">Roll On</button>
+                    <button class="category-btn" onclick="filterCategory('Care')">Personal Care</button>
+                </div>
+
+                <div class="products-grid" id="productsList"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page" id="aboutPage">
+        <div class="about-page">
+            <div class="about-container">
+                <h1 class="about-title">About Us</h1>
+                <div class="about-content">
+                    <h2 class="about-subtitle">Salon Charbel Hbayter</h2>
+                    <p class="about-text">
+                        Welcome to Salon Charbel Hbayter, your premier destination for men's grooming excellence in Rachiine. 
+                        We specialize in providing top-quality haircuts, beard styling, and professional grooming services tailored 
+                        specifically for the modern gentleman.
+                    </p>
+                    <p class="about-text">
+                        Our salon combines traditional barbering techniques with contemporary styling to deliver exceptional results. 
+                        We use only the finest professional-grade products and equipment to ensure every client leaves looking and feeling their best.
+                    </p>
+                    <p class="about-text">
+                        Beyond our salon services, we offer a carefully curated selection of premium grooming products for men, 
+                        from professional hair clippers and trimmers to high-quality gels, roll-ons, and facial masks. 
+                        Each product is chosen to help you maintain that fresh, polished look at home.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page" id="contactPage">
+        <div class="contact-page">
+            <div class="contact-container">
+                <h1 class="contact-title">Contact Us</h1>
+                <div class="contact-content">
+                    <h2 class="contact-subtitle">Get in Touch</h2>
+
+                    <div class="contact-links">
+                        <a href="https://wa.me/70528225" target="_blank" class="contact-link whatsapp">
+                            <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                            <div class="contact-link-info">
+                                <div class="contact-link-title">WhatsApp</div>
+                                <div class="contact-link-text">70 528 225</div>
+                            </div>
+                        </a>
+
+                        <a href="tel:70528225" class="contact-link phone">
+                            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                            <div class="contact-link-info">
+                                <div class="contact-link-title">Call Us</div>
+                                <div class="contact-link-text">70 528 225</div>
+                            </div>
+                        </a>
+
+                        <a href="https://www.instagram.com/charbel.hbayter" target="_blank" class="contact-link instagram">
+                            <div class="contact-icon"><i class="fab fa-instagram"></i></div>
+                            <div class="contact-link-info">
+                                <div class="contact-link-title">Instagram</div>
+                                <div class="contact-link-text">@charbel.hbayter</div>
+                            </div>
+                        </a>
+
+                        <a href="https://www.facebook.com/share/1G9nZ1HP5V/?mibextid=wwXIfr" target="_blank" class="contact-link facebook">
+                            <div class="contact-icon"><i class="fab fa-facebook-f"></i></div>
+                            <div class="contact-link-info">
+                                <div class="contact-link-title">Facebook</div>
+                                <div class="contact-link-text">Charbel.hbayter</div>
+                            </div>
+                        </a>
+
+                        <a href="https://www.tiktok.com/@charbelhbayterjiz?_r=1&_t=ZS-92NpLmSWl3H" target="_blank" class="contact-link tiktok">
+                            <div class="contact-icon"><i class="fab fa-tiktok"></i></div>
+                            <div class="contact-link-info">
+                                <div class="contact-link-title">TikTok</div>
+                                <div class="contact-link-text">@charbel.hbayter</div>
+                            </div>
+                        </a>
+
+                        <a href="https://www.google.com/maps/search/?api=1&query=9WR9+FX8, Rachiine" target="_blank" class="contact-link location">
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="contact-link-info">
+                                <div class="contact-link-title">Location</div>
+                                <div class="contact-link-text">Rachiine-zgharta</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2 class="cart-title">Your Bag</h2>
+            <button class="cart-close" onclick="toggleCart()">×</button>
+        </div>
+        
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty">Your bag is empty</div>
+        </div>
+
+        <div class="cart-footer" id="cartFooter" style="display: none;">
+            <div class="cart-total">
+                <div class="cart-total-row">
+                    <span>Total (USD):</span>
+                    <span id="cartTotalUSD">$0</span>
+                </div>
+                <div class="cart-total-row main">
+                    <span>Total (LBP):</span>
+                    <span id="cartTotalLBP">0 LBP</span>
+                </div>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">
+                <i class="fab fa-whatsapp"></i>
+                <span>Checkout via WhatsApp</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const products = [
+            { 
+                id: 1, 
+                name: 'Gel', 
+                price: 1.60, 
+                category: 'Gel',
+                image: 'https://github.com/maykelkhouryyammine/salon-charbel-images/blob/main/elegancehair.webp?raw=true'
+            },
+            { 
+                id: 2, 
+                name: 'Gel Wax', 
+                price: 2.20, 
+                category: 'Gel',
+                image: 'https://github.com/maykelkhouryyammine/salon-charbel-images/blob/main/wax.webp?raw=true'
+            },
+            { 
+                id: 3, 
+                name: 'Hair Spray', 
+                price: 3.30, 
+                category: 'Gel',
+                image: 'https://github.com/maykelkhouryyammine/salon-charbel-images/blob/main/spray.webp?raw=true'
+            },
+            { 
+                id: 4, 
+                name: 'ElSada', 
+                price: 1.60, 
+                category: 'Rollon',
+                image: 'https://github.com/maykelkhouryyammine/salon-charbel-images/blob/main/rollonn.webp?raw=true'
+            },
+            { 
+                id: 5, 
+                name: 'No Limit', 
+                price: 1.60, 
+                category: 'Rollon',
+                image: 'https://github.com/maykelkhouryyammine/salon-charbel-images/blob/main/nolimit.webp?raw=true'
+            },
+            { 
+                id: 6, 
+                name: 'Hilda Perfumes', 
+                price: 4.50, 
+                category: 'Perfume',
+                image: 'https://github.com/maykelkhouryyammine/salon-charbel-images/blob/main/prfum.webp?raw=true'
+            },
+            { 
+                id: 7, 
+                name: 'Styling Powder', 
+                price: 3.30, 
+                category: 'Gel',
+                image: 'https://github.com/maykelkhouryyammine/salon-charbel-images/blob/main/powder.webp?raw=true'
+            },
+            { 
+                id: 8, 
+                name: 'Hair & Beard Oil', 
+                price: 3.30, 
+                category: 'Care',
+                image: 'https://github.com/maykelkhouryyammine/salon-charbel-images/blob/main/hairbeard.webp?raw=true'
+            },
+            { 
+                id: 9, 
+                name: 'Leave-In Spray', 
+                price: 6.50, 
+                category: 'Care',
+                image: 'https://github.com/maykelkhouryyammine/salon-charbel-images/blob/main/eleganceextract.webp?raw=true'
+            },
+            { 
+                id: 10, 
+                name: 'Hair Cream', 
+                price: 4.50, 
+                category: 'Gel',
+                image: 'https://github.com/maykelkhouryyammine/salon-charbel-images/blob/main/brilliantgel.webp?raw=true'
+            },
+            { 
+                id: 11, 
+                name: 'After Shave Lotion', 
+                price: 4.50, 
+                category: 'Care',
+                image: 'https://github.com/maykelkhouryyammine/salon-charbel-images/blob/main/afterplus.webp?raw=true'
+            },
+        ];
+
+        let cart = [];
+        let currentCategory = 'all';
+        const USD_TO_LBP = 90000;
+
+        function init() {
+            renderProducts();
+            updateCartUI();
+            
+            document.querySelectorAll('.nav-menu li').forEach(li => {
+                li.addEventListener('click', function() {
+                    document.querySelectorAll('.nav-menu li').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                });
+            });
+        }
+
+        function showPage(page) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(page + 'Page').classList.add('active');
+            
+            document.querySelectorAll('.nav-menu li').forEach(li => {
+                li.classList.remove('active');
+                if (li.getAttribute('data-page') === page) {
+                    li.classList.add('active');
+                }
+            });
+            
+            // Auto-close mobile menu when page changes
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.remove('active');
+        }
+
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+        }
+
+        function filterCategory(category) {
+            currentCategory = category;
+            
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            renderProducts();
+        }
+
+        function renderProducts() {
+            const productsList = document.getElementById('productsList');
+            const filtered = currentCategory === 'all' 
+                ? products 
+                : products.filter(p => p.category === currentCategory);
+            
+            if (filtered.length === 0) {
+                productsList.innerHTML = '<div style="text-align: center; padding: 40px; color: var(--text-light); grid-column: 1 / -1;">No products in this category</div>';
+                return;
+            }
+            
+            productsList.innerHTML = filtered.map(product => `
+                <div class="product-card">
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <div class="product-info">
+                        <div class="product-category">${product.category}</div>
+                        <div class="product-name">${product.name}</div>
+                        <div class="product-price">$${product.price}</div>
+                        <button class="add-to-bag-btn" onclick="addToCart(${product.id})">Add to Bag</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            cart.push(product);
+            updateCartUI();
+            
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = 'Added!';
+            btn.style.background = '#d4af37';
+            btn.style.color = '#0a0a0a';
+            
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.background = 'transparent';
+                btn.style.color = '#d4af37';
+                btn.style.borderColor = '#d4af37';
+            }, 1000);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cartSidebar');
+            const overlay = document.getElementById('cartOverlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        function updateCartUI() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const cartFooter = document.getElementById('cartFooter');
+            const cartTotalUSD = document.getElementById('cartTotalUSD');
+            const cartTotalLBP = document.getElementById('cartTotalLBP');
+
+            if (cart.length === 0) {
+                cartCount.style.display = 'none';
+                cartItems.innerHTML = '<div class="cart-empty">Your bag is empty</div>';
+                cartFooter.style.display = 'none';
+            } else {
+                cartCount.style.display = 'flex';
+                cartCount.textContent = cart.length;
+                
+                cartItems.innerHTML = cart.map((item, index) => `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">$${item.price}</div>
+                        </div>
+                        <button class="cart-item-remove" onclick="removeFromCart(${index})">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                `).join('');
+
+                const totalUSD = cart.reduce((sum, item) => sum + item.price, 0);
+                const totalLBP = totalUSD * USD_TO_LBP;
+                
+                cartTotalUSD.textContent = '$' + totalUSD;
+                cartTotalLBP.textContent = totalLBP.toLocaleString() + ' LBP';
+                cartFooter.style.display = 'block';
+            }
+        }
+
+        function checkout() {
+    if (cart.length === 0) {
+        alert('Your bag is empty!');
+        return;
+    }
+
+    const totalUSD = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
+    const totalLBP = (totalUSD * USD_TO_LBP).toLocaleString();
+    
+    let message = 'Hello! I would like to order the following products:\n\n';
+    
+    cart.forEach((item, index) => {
+        message += `${index + 1}. ${item.name} - $${item.price}\n`;
+    });
+    
+    message += `\nTotal: $${totalUSD} (${totalLBP} LBP)`;
+    
+    // Encode the entire message properly
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappURL = `https://wa.me/70528225?text=${encodedMessage}`;
+    window.open(whatsappURL, '_blank');
+}
+
+        init();
+    </script>
+</body>
+</html>
